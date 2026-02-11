@@ -10,7 +10,7 @@ assistant:
 
 profil:
   nom: Marie Fournigault
-  metier: Chef de projets développement produit
+  role: Chef de projets développement produits
 
 experiences_professionnelles:
   - entreprise: Cartier, Paris
@@ -33,7 +33,7 @@ experiences_professionnelles:
       - Management et formation des juniors de l'équipe
       - Manager direct des alternants
       - Membre de l'équipe projet pour le développement d’un module de planification interfacé avec SAP
-      - Gestion charge/capacité moyen et long terme des ateliers
+      - Gestion charge vs capacité moyen et long terme des ateliers
       - Suivi performance ateliers (livraisons, retard)
 
   - entreprise: Cartier, Turin, Italie
