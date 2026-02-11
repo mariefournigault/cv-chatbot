@@ -1,194 +1,61 @@
-import streamlit as st
-from openai import OpenAI
 import os
+import streamlit as st
+import OpenAI
+import yaml
+
 
 # 🔐 Récupération sécurisée de la clé API
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-# -------- TON CV -------- #
+# lire le cv
 
-CV = """
-Nom : Marie Fournigault
-Métier : Chef de projets développement produit
-Expériences professionnelles :
+with open(f'{working_dir}/cv.yaml', 'r', encoding='utf-8') as file:
+    cv = yaml.safe_load(file)
 
-1) Sept 2023 - Aujourd'hui : Cartier, Paris (CDI)
-   Poste : Cheffe de projets développement produit
-   Missions :
-   - Piloter le développement des nouvelles collections répétitives, de la réception de la gouache à la livraison finale - phases cadrage, conception, industrialisation, production
-   - Rédaction du cahier des charges et des spécifications clients
-   - Définition des coûtants et des budgets
-   - Définition du planning projet
-   - Pilotage des projets tout au long de leur cycle de vie (qualité, coûts, délais, budget, analyse de risques)
-   - Coordination et management des équipes transverses (designer, concepteurs, techniciens, experts, acheteurs, planificateurs, etc.)
-   - Reporting fréquents à la direction
-   - Animation des daily & weekly avec les équipes projets
-
-2) Oct 2020 - Août 2023: Cartier, Paris (CDI)
-   Poste : Planificatrice senior de production
-   Missions :
-   - Management et formation des juniors de l'équipe
-   - Manager direct des alternants
-   - Membre de l'équipe projet, en temps que user, de développement d’un module de planification interfacé avec SAP. Intégrée aux phases de test, puis en charge de la formation aux autres utilisateurs
-   - Gestion charge/capacité moyen et long terme des ateliers
-   - Suivi performance ateliers (livraisons, retard)
-
-3) Oct 2018 - Sept 2020 : Cartier, Turin, Italie (V.I.E)
-   a) Planificatrice de production (9 mois)
-   Missions :
-      - Mise à jour KPIs
-      - Animation de la performance globale
-      - Réalisation du plan de production hebdo à mensuel
-      - Pilotage du processus commandes spéciales (réalisation des devis, suivi de la production)
-   b) Cheffe de projets logistiques (15 mois)
-   Missions :
-      - Création de tableaux de bord et KPIs logistiques. Utilisation de VBA pour automatiser la mise à jour des graphiques et la création du ppt de présentation.
-      - Optimisation espace et flux (chantiers 5S, réorganisation stock composants)
-      - Amélioration performance zone logistique (gain 18% sur Taux de Service en modifiant le processus de servi des composants)
-      - Déploiement emballages réutilisables (gain 200K sachets plastiques/an)
-      - Participation à l’implantation de la nouvelle zone logistique (étude des flux pour implantation des postes de travail)
-
-4) Sept 2014 - Sept 2018 : Hutchinson, Châteaudun
-   a) Apprentie Ingénieure
-      - Département Achats (2 ans) : 
-        Missions :
-        - Création d'une grille pour évalider le niveau de risque des couples fournisseurs/composants
-        - Amélioration du processus d'homologation des couples fournisseurs/composants
-        - Mise en place d'un processus clair lors de la bascule développement à production vie série 
-      - Département Supply Chain (1 an) : 
-        Missions : 
-        - implantation magasin composants (étude des flux pour implantation des postes de travail)
-        - Mise en place d'un Kanban informatique sur les ilots de production pour mieux piloter les approvisionnements
-        - Amélioration des flux inter-filiales (EDI & informations sur les étiquettes de transport)
-   b) Stage international (Juin-Sept 2016, Roumanie) : 
-   Missions : optimisation flux physiques et d’informations (suite de la mission en supply chain : Amélioration des flux inter-filiales (EDI & informations sur les étiquettes de transport))
-   c) Apprentie Technicienne, Département Qualité Production : 
-   Missions : déploiement traçabilité îlots de production
-
-Formations :
-- 2015-2018 : Diplôme d’Ingénieur Généraliste, spécialité Génie Industriel, ECAM Rennes, apprentissage
-  - Parcours ITII Entreprendre (1 an)
-  - Membre actif du BDE et organisation d’événements
-- 2014-2015 : DUT Qualité Logistique Industrielle et Organisation, IUT d’Orléans
-- 2012 : Baccalauréat Scientifique, Lycée Pasquet, Arles
-
-Compétences clés :
-- Hard skills : SAP, Anaplan, planification, gestion de projets , Pack Office, Power BI, Lean Management, logistique, supply chain, VBA, Trello, Analyse de risques, Planning, Google Colab (pour faire ce CV interactif)
-- Soft skills : leadership, coordination d’équipes, organisation, analyse, force de proposition, autonome
-- méthodes : Agile (connait les grands principes, vu en formations professionnelles), Lean Management (vu pendant les études et utilisation de nombreux outils à travers mes missions), 6 sigma (vu pendant les études et utilisation de nombreux outils à travers mes missions)
-
-
-Forces personnelles :
-- Organisation et planification
-- Capacités d’analyse
-- Sens du détail
-- Leadership et encadrement d’équipe
-
-Objectif professionnel :
-- Évoluer vers un poste de Product Owner ou Chef de projet IT 
-
-hobbies:
-  - Endurance : Course à pied, Trail, Cyclisme
-  - Montagne : Ski, Randonnée, VTT
-  - Nautique : Navigation à la voile, permis côtier
-  - Travaux manuels : couture, DIY
-
-Questions fréquentes :
-Q : As-tu déjà managé une équipe ?
-R : Oui, j’ai managé directement les apprentis et formé les juniors lorsque j'étais planificatrice sénior à Paris. Aujourd'hui, en temps que cheffe de projets je fais du management transversal. 
-
-Q : Es-tu à l’aise avec l’international ?
-R : Oui, expérience en Italie et Roumanie.
-
-Q : Est-ce que tu parles plusieurs langues ?
-R : Oui, en plus du français qui est ma langue natale, j'ai un niveau professionel en anglais et italien. Je travaillais en italien lors de mon V.I.E. à Turin, et régulièrement en anglais chez Hutchinson.
-
-Q : Quelles sont tes réalisations majeures ?
-R : Augmentation du Taux de Service de 18%, déploiement d’emballages réutilisables (200K sachets plastiques/an), lancement de nouvelles collections chez Cartier, déploiement d'un nouvel outil d'affermissement du besoin en planification.
-"""
-
-
-# -------- PROMPT IA -------- #
-
-SYSTEM_PROMPT = """
-Tu es un assistant intelligent conçu pour répondre aux questions de recruteurs sur mon (Marie Fournigault) profil professionnel.
-Ton rôle est de fournir des réponses précises et pertinentes en t'appuyant sur les informations disponibles dans mes compétences et mon expérience.
-Réponds de manière claire et concise, en mettant en avant mes compétences, mes réalisations et ma valeur ajoutée pour le poste visé.
-Ton rôle est tout de même de défendre mon profil, sans mentir en prenant en compte tous les éléments ci-dessous.
-Il faut que tu me vendes  comme (dans ce sens) : Product Owner, Chef de projet IT, Chef de projet développement produit, chef de projet logisque, chef de projet industrialisation
-Ne parle pas de mon salaire attendu.
-
-OBJECTIF :
-Mettre en valeur le profil de Marie Fournigault de manière honnête et professionnelle.
-
-RÈGLES IMPORTANTES :
-
-- Réponds UNIQUEMENT aux questions professionnelles.
-- Si une question est personnelle (âge, situation familiale, adresse, religion, politique, salaire, etc),
-réponds :
-
-"Je préfère me concentrer sur les éléments professionnels du profil."
-
-- Ne jamais inventer.
-- Reste synthétique.
-- Ton ton doit être naturel et humain (pas robotique).
-
-Voici le profil :
-
-""" + CV
-
-
-# -------- FONCTION CHAT -------- #
-
-def ask_ai(messages):
-
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=messages,
-        temperature=0.4
-    )
-
-    return response.choices[0].message.content
-
-
-# -------- INTERFACE -------- #
-
+# configuring streamlit page settings
 st.set_page_config(
-    page_title="CV interactif - Marie Fournigault",
-    page_icon="💬",
     layout="centered"
 )
 
-st.title("💬 CV interactif")
-st.write("Posez une question sur mon parcours professionnel.")
+# initialize chat session in streamlit if not already present
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
 
-# Mémoire de conversation
-if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "system", "content": SYSTEM_PROMPT}
-    ]
+# streamlit page title
+st.title("🤖 Bienvenue ! Posez-moi vos questions sur Marie.")
 
-# Affichage historique
-for msg in st.session_state.messages[1:]:
-    with st.chat_message(msg["role"]):
-        st.write(msg["content"])
+with st.expander('Vous voulez savoir comment je fonctionne ?') :
+    st.write("Lorsque vous me posez une question, l'application fait une requête (comprenant le CV de Marie) sur l'API OpenAI, ce qui me permet de vous répondre :)")
 
-# Input utilisateur
-if prompt := st.chat_input("Votre question..."):
+# display chat history
+for message in st.session_state.chat_history:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
-    st.session_state.messages.append(
-        {"role": "user", "content": prompt}
+
+# input field for user's message
+user_prompt = st.chat_input("Posez-moi une question...")
+
+if user_prompt:
+    # add user's message to chat and display it
+    st.chat_message("user").markdown(user_prompt)
+    print(f"bot_msg_user : {user_prompt}")
+    st.session_state.chat_history.append({"role": "user", "content": user_prompt})
+
+    # send user's message to GPT-4o and get a response
+    response = openai.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": cv_string},
+            # unpacking list to append each element on messages list
+            *st.session_state.chat_history
+        ]
     )
 
-    with st.chat_message("user"):
-        st.write(prompt)
+    assistant_response = response.choices[0].message.content
+    print(f"bot_msg_assistant : {assistant_response}")
+    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
 
+    # display GPT-4o's response
     with st.chat_message("assistant"):
-
-        response = ask_ai(st.session_state.messages)
-
-        st.write(response)
-
-    st.session_state.messages.append(
-        {"role": "assistant", "content": response}
-    )
+        st.markdown(assistant_response)
