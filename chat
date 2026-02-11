@@ -1,0 +1,107 @@
+import streamlit as st
+from openai import OpenAI
+import os
+
+# 🔐 Récupération sécurisée de la clé API
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
+# -------- TON CV -------- #
+
+CV = """
+Nom : Marie Fournigault
+Métier : Cheffe de projets développement produit
+
+Objectif : évoluer vers un poste de Product Owner ou Chef de projet IT.
+
+Expériences majeures :
+- Cheffe de projets développement produit chez Cartier : pilotage complet des nouvelles collections (qualité, coûts, délais, risques).
+- Planificatrice senior : management de juniors, pilotage charge/capacité, déploiement d’un module SAP.
+- Cheffe de projets logistiques : +18% de taux de service, déploiement d’emballages réutilisables (200K plastiques économisés/an).
+- Expérience internationale : Italie et Roumanie.
+
+Compétences :
+SAP, planification, gestion de projets, Power BI, Lean, supply chain, VBA.
+
+Soft skills :
+Leadership, organisation, analyse, autonomie.
+"""
+
+# -------- PROMPT IA -------- #
+
+SYSTEM_PROMPT = """
+Tu es un assistant professionnel chargé de répondre aux recruteurs.
+
+OBJECTIF :
+Mettre en valeur le profil de Marie Fournigault de manière honnête et professionnelle.
+
+RÈGLES IMPORTANTES :
+
+- Réponds UNIQUEMENT aux questions professionnelles.
+- Si une question est personnelle (âge, situation familiale, adresse, religion, politique, salaire, etc),
+réponds :
+
+"Je préfère me concentrer sur les éléments professionnels du profil."
+
+- Ne jamais inventer.
+- Reste synthétique.
+- Ton ton doit être naturel et humain (pas robotique).
+
+Voici le profil :
+
+""" + CV
+
+
+# -------- FONCTION CHAT -------- #
+
+def ask_ai(messages):
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=messages,
+        temperature=0.4
+    )
+
+    return response.choices[0].message.content
+
+
+# -------- INTERFACE -------- #
+
+st.set_page_config(
+    page_title="CV interactif - Marie Fournigault",
+    page_icon="💬",
+    layout="centered"
+)
+
+st.title("💬 CV interactif")
+st.write("Posez une question sur mon parcours professionnel.")
+
+# Mémoire de conversation
+if "messages" not in st.session_state:
+    st.session_state.messages = [
+        {"role": "system", "content": SYSTEM_PROMPT}
+    ]
+
+# Affichage historique
+for msg in st.session_state.messages[1:]:
+    with st.chat_message(msg["role"]):
+        st.write(msg["content"])
+
+# Input utilisateur
+if prompt := st.chat_input("Votre question..."):
+
+    st.session_state.messages.append(
+        {"role": "user", "content": prompt}
+    )
+
+    with st.chat_message("user"):
+        st.write(prompt)
+
+    with st.chat_message("assistant"):
+
+        response = ask_ai(st.session_state.messages)
+
+        st.write(response)
+
+    st.session_state.messages.append(
+        {"role": "assistant", "content": response}
+    )
