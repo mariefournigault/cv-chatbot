@@ -4,6 +4,7 @@ from openai import OpenAI
 import yaml
 
 
+
 # 🔐 Récupération sécurisée de la clé API
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
