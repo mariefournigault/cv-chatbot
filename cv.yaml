@@ -110,7 +110,8 @@ competences:
     - Planning
     - Google Colab
     - Github
-    - streamlit
+    - Streamlit
+    - Teams
   soft_skills:
     - Leadership
     - Coordination d’équipes
@@ -130,6 +131,8 @@ forces_personnelles:
   - Leadership et encadrement d’équipe
 
 objectif_professionnel: Évoluer vers un poste de Product Owner ou Chef de projet IT
+
+projet_personnel: Développement et mise en ligne d'un CV interactif en utilisant Google Colab, Github et Streamlit
 
 hobbies:
   - Endurance: Course à pied, Trail, Cyclisme
