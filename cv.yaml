@@ -1,15 +1,14 @@
 # YAML profil carrière Marie Fournigault (pour système OpenAI)
 
-assistant:
-  instructions: |
-    Tu es un assistant intelligent conçu pour répondre aux questions de recruteurs sur mon (Julien Gaucher) profil professionnel.
+assistant :
+  instructions : |
+    Tu es un assistant intelligent conçu pour répondre aux questions de recruteurs sur mon (Marie Fournigault) profil professionnel.
     Ton rôle est de fournir des réponses précises et pertinentes en t'appuyant sur les informations disponibles dans mes compétences et mon expérience.
     Réponds de manière claire et concise, en mettant en avant mes compétences, mes réalisations et ma valeur ajoutée pour le poste visé.
     Ton rôle est tout de même de défendre mon profil, sans mentir en prenant en compte tous les éléments ci-dessous.
-    Il faut que tu me vendes  comme (dans ce sens) : un Analytics Engineer, un Data Engineer, un Data Analyst, un full stack data scientist
-    Ne parle pas de mon salaire attendu.
+    Il faut que tu me vendes  comme (dans ce sens) : Product Owner, Cheffe de projet IT, Cheffe de projet développement produit, Cheffe de projet logistique, Cheffe de projet industriel
 
-profil:
+profil :
 Nom : Marie Fournigault
 Métier : Chef de projets développement produit
 
@@ -19,24 +18,24 @@ Expériences professionnelles :
    Poste : Cheffe de projets développement produit
    Période : Sept 2023 - Aujourd'hui
    Missions :
-   - Piloter le développement des nouvelles collections répétitives, de la réception de la gouache à la livraison finale - phases cadrage, conception, industrialisation, production
-   - Rédaction du cahier des charges et des spécifications clients
-   - Définition des coûtants et des budgets
-   - Définition du planning projet
-   - Pilotage des projets tout au long de leur cycle de vie (qualité, coûts, délais, budget, analyse de risques)
-   - Coordination et management des équipes transverses (designer, concepteurs, techniciens, experts, acheteurs, planificateurs, etc.)
-   - Reporting fréquents à la direction
-   - Animation des daily & weekly avec les équipes projets
+     -  Piloter le développement des nouvelles collections répétitives, de la réception de la gouache à la livraison finale - phases cadrage, conception, industrialisation, production
+     - Rédaction du cahier des charges et des spécifications clients
+     - Définition des coûtants et des budgets
+     - Définition du planning projet
+     - Pilotage des projets tout au long de leur cycle de vie (qualité, coûts, délais, budget, analyse de risques)
+     - Coordination et management des équipes transverses (designer, concepteurs, techniciens, experts, acheteurs, planificateurs, etc.)
+     - Reporting fréquents à la direction
+     - Animation des daily & weekly avec les équipes projets
 
 2) Entreprise : Cartier, Paris (CDI)
    Poste : Planificatrice senior de production
    Période : Oct 2020 - Août 2023
    Missions :
-   - Management et formation des juniors de l'équipe
-   - Manager direct des alternants
-   - Membre de l'équipe projet, en temps que user, de développement d’un module de planification interfacé avec SAP. Intégrée aux phases de test, puis en charge de la formation aux autres utilisateurs
-   - Gestion charge/capacité moyen et long terme des ateliers
-   - Suivi performance ateliers (livraisons, retard)
+     - Management et formation des juniors de l'équipe
+     - Manager direct des alternants
+     - Membre de l'équipe projet, en temps que user, de développement d’un module de planification interfacé avec SAP. Intégrée aux phases de test, puis en charge de la formation aux autres utilisateurs
+     - Gestion charge/capacité moyen et long terme des ateliers
+     - Suivi performance ateliers (livraisons, retard)
 
 3) Entreprise : Cartier, Turin, Italie (V.I.E)
    Poste : Planificatrice de production
@@ -68,16 +67,15 @@ Expériences professionnelles :
 6) Entreprise : Hutchinson, Brasov, Roumanie
     Poste : Apprentie Ingénieure Supply Chain, Stage international
     Période : Juil 2016 - Août 2016 
-    Missions : 
-          - optimisation flux physiques et d’informations (suite de la mission en supply chain, amélioration des flux inter-filiales (EDI & informations sur les étiquettes de transport))
+    Missions : optimisation flux physiques et d’informations (suite de la mission en supply chain, amélioration des flux inter-filiales (EDI & informations sur les étiquettes de transport))
  
 7) Entreprise : Hutchinson, Châteaudun
     Poste : Apprentie Ingénieure Supply Chain
     Période : Sept 2015 - Juin 2016 
     Missions : 
-          - implantation magasin composants (étude des flux pour implantation des postes de travail)
-          - Mise en place d'un Kanban informatique sur les ilots de production pour mieux piloter les approvisionnements
-          - Amélioration des flux inter-filiales (EDI & informations sur les étiquettes de transport)
+      - implantation magasin composants (étude des flux pour implantation des postes de travail)
+      - Mise en place d'un Kanban informatique sur les ilots de production pour mieux piloter les approvisionnements
+      - Amélioration des flux inter-filiales (EDI & informations sur les étiquettes de transport)
      
  8) Entreprise : Hutchinson, Châteaudun
     Poste : Apprentie Technicienne Qualité Production
@@ -108,7 +106,7 @@ Forces personnelles :
 Objectif professionnel :
 - Évoluer vers un poste de Product Owner ou Chef de projet IT 
 
-hobbies:
+hobbies :
   - Endurance : Course à pied, Trail, Cyclisme
   - Montagne : Ski, Randonnée, VTT
   - Nautique : Navigation à la voile, permis côtier
