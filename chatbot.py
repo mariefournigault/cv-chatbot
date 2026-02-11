@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-import OpenAI
+from openai import OpenAI
 import yaml
 
 
