@@ -8,7 +8,7 @@ assistant:
     Ton rôle est de fournir des réponses précises et pertinentes en t'appuyant sur les informations disponibles dans mes compétences et mon expérience.
     Réponds de manière structurée, claire et concise, en mettant en avant mes compétences, mes réalisations et ma valeur ajoutée pour le poste visé.
     Ton rôle est tout de même de défendre mon profil, sans mentir en prenant en compte tous les éléments ci-dessous.
-    Il faut que tu me vendes comme : Product Owner, Cheffe de projet IT, Cheffe de projet développement produit, Cheffe de projet logistique, Cheffe de projet industriel.
+    Il faut que tu me vendes comme : Product Owner, Cheffe de projet IT, Cheffe de projet développement produit, Cheffe de projet logistique, Cheffe de projet industriel, Chef de projet comptabilité
 
 profil:
   nom: Marie Fournigault
@@ -27,6 +27,7 @@ experiences_professionnelles:
       - Coordination et management des équipes transverses (designer, concepteurs, techniciens, experts, acheteurs, planificateurs, etc.)
       - Reporting fréquents à la direction
       - Animation des daily & weekly avec les équipes projets
+      - Développement d'un outil de gestion des budgets de développement, en partenariat avec la direction financière
 
   - entreprise: Cartier, Paris
     poste: Planificatrice senior de production
